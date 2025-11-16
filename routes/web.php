@@ -7,9 +7,9 @@ use App\Livewire\Settings\TwoFactor;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+use App\Http\Controllers\PageController;
+
+Route::get('/', [PageController::class, 'index'])->name('home');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

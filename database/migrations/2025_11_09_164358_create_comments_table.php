@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->morphs('commentable'); // This allows comments to be associated with either questions or answers
             $table->text('content');
             $table->timestamps();
